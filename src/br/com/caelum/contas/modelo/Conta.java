@@ -1,9 +1,10 @@
 package br.com.caelum.contas.modelo;
+
 public class Conta {
 	private static int maiorIdentificador = 0;
 
 	private int numero;
-	private double saldo;
+	protected double saldo;
 	private String titular;
 	private String agencia;
 	private String dataDeAbertura;
@@ -18,6 +19,15 @@ public class Conta {
 		this.titular = titular;
 		Conta.maiorIdentificador = Conta.maiorIdentificador + 1;
 		this.identificador = Conta.maiorIdentificador;
+	}
+
+	public void transfere(double valor, Conta conta) {
+		this.saca(valor);
+		conta.deposita(valor);
+	}
+
+	public String getTipo() {
+		return "Conta";
 	}
 
 	public int getNumero() {
@@ -57,7 +67,7 @@ public class Conta {
 	}
 
 	private boolean dataValida(String data) {
-		if(data.length() != 10) {
+		if (data.length() != 10) {
 			return false;
 		} else {
 			return true;
@@ -65,10 +75,10 @@ public class Conta {
 	}
 
 	public void setDataDeAbertura(String dataDeAbertura) {
-		if(!dataValida(dataDeAbertura)) {
-			System.out.println("Data não é válida: " + dataDeAbertura);			
+		if (!dataValida(dataDeAbertura)) {
+			System.out.println("Data nï¿½o ï¿½ vï¿½lida: " + dataDeAbertura);
 		} else {
-			this.dataDeAbertura = dataDeAbertura;			
+			this.dataDeAbertura = dataDeAbertura;
 		}
 	}
 
@@ -90,10 +100,10 @@ public class Conta {
 
 	public String recuperaDadosParaImpressao() {
 		String dados = "Titular:	" + this.titular;
-		dados += "\nNúmero: " + this.numero;
+		dados += "\nNï¿½mero: " + this.numero;
 		dados += "\nSaldo: " + this.saldo;
 		dados += "\nTitular: " + this.titular;
-		dados += "\nAgência: " + this.agencia;
+		dados += "\nAgï¿½ncia: " + this.agencia;
 		dados += "\nData de Abertura: " + this.dataDeAbertura;
 		dados += "\nRendimento: " + this.calculaRendimento();
 		return dados;
