@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public class Conta {
+public abstract class Conta {
 	private static int maiorIdentificador = 0;
 
 	private int numero;
@@ -26,9 +26,7 @@ public class Conta {
 		conta.deposita(valor);
 	}
 
-	public String getTipo() {
-		return "Conta";
-	}
+	public abstract String getTipo();
 
 	public int getNumero() {
 		return numero;
