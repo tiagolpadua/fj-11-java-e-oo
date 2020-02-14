@@ -108,7 +108,7 @@ public abstract class Conta {
 
     @Override
     public String toString() {
-        return "[titular=" + titular + ", numero=" + numero + ", agencia=" + agencia + "]";
+        return this.titular.toUpperCase();
     }
 
     public boolean equals(Object obj) {
