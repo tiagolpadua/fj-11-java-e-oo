@@ -1,6 +1,6 @@
 package br.com.caelum.contas.modelo;
 
-public abstract class Conta {
+public abstract class Conta implements Comparable<Conta> {
     private static int maiorIdentificador = 0;
 
     private int numero;
@@ -121,12 +121,18 @@ public abstract class Conta {
 
     public String recuperaDadosParaImpressao() {
         String dados = "Titular:	" + this.titular;
-        dados += "\nN�mero: " + this.numero;
+        dados += "\número: " + this.numero;
         dados += "\nSaldo: " + this.saldo;
         dados += "\nTitular: " + this.titular;
-        dados += "\nAg�ncia: " + this.agencia;
+        dados += "\nAgência: " + this.agencia;
         dados += "\nData de Abertura: " + this.dataDeAbertura;
         dados += "\nRendimento: " + this.calculaRendimento();
         return dados;
     }
+
+    @Override
+    public int compareTo(Conta outraConta) {
+        return this.titular.compareTo(outraConta.titular);
+    }
+
 }
