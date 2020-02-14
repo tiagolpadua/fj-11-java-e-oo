@@ -106,6 +106,19 @@ public abstract class Conta {
         return identificador;
     }
 
+    @Override
+    public String toString() {
+        return "[titular=" + titular + ", numero=" + numero + ", agencia=" + agencia + "]";
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        Conta outraConta = (Conta) obj;
+        return this.numero == outraConta.numero && this.agencia.equals(outraConta.agencia);
+    }
+
     public String recuperaDadosParaImpressao() {
         String dados = "Titular:	" + this.titular;
         dados += "\nN�mero: " + this.numero;
